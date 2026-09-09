@@ -150,10 +150,9 @@ pub struct SmartcardSigningKey {
     pub pin: Option<String>,
 
     /// Environment variable holding the smartcard PIN
-    ///
-    /// (Not `serde(skip)`: commands like `sign` round-trip this struct
-    /// through the config layer, and skipping silently dropped the value,
-    /// causing an interactive PIN prompt despite the argument.)
+    // Not `serde(skip)`: commands like `sign` round-trip this struct
+    // through the config layer, and skipping silently dropped the value,
+    // causing an interactive PIN prompt despite --smartcard-pin-env.
     #[arg(long = "smartcard-pin-env", value_name = "STRING")]
     pub pin_env: Option<String>,
 
